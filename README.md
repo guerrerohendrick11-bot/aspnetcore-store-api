@@ -1,160 +1,60 @@
- Store API - ASP.NET Core
+🛒 ASP.NET Core Store API
 
-API REST desarrollada como proyecto de práctica para aprender desarrollo backend con ASP.NET Core.
-La aplicación permite gestionar productos mediante un CRUD completo y utiliza una arquitectura en capas para mantener el código organizado y escalable.
+REST API for a simple store, built with ASP.NET Core following a layered architecture (Controllers, Services, Interfaces, DTOs) and Entity Framework Core for data access.
 
----
+✨ Features
 
- Tecnologías utilizadas
+Layered architecture: clear separation between controllers, business logic, and data access
+Authentication and authorization with JWT
+Persistence with Entity Framework Core and SQL Server
+DTOs to decouple domain models from API responses
+RESTful endpoints for product/store management
 
-* ASP.NET Core Web API
-* Entity Framework Core
-* SQL Server
-* Swagger / OpenAPI
-* Arquitectura en capas (Controllers, Services, Interfaces, DTOs)
+🛠️ Technologies
 
----
+C# / ASP.NET Core
+Entity Framework Core
+SQL Server
+JWT (JSON Web Tokens)
 
- Estructura del proyecto
+📁 Project Structure
 
-El proyecto está organizado para separar responsabilidades y facilitar el mantenimiento.
+├── Controllers/ # API Endpoints
+├── Services/ # Business Logic
+├── Interfaces/ # Service Contracts
+├── DTOs/ # Data Transfer Objects
+├── Models/ # Domain Entities
+└── Data/ # DbContext EF Core Setup
 
-Controllers
-Contienen los endpoints de la API y reciben las peticiones HTTP.
+🚀 How to Run the Project
 
-Services
-Contienen la lógica de negocio de la aplicación.
+Clone the repository
 
-Interfaces
-Definen contratos para los servicios y facilitan la inyección de dependencias.
+bash git clone https://github.com/guerrerohendrick11-bot/aspnetcore-store-api.git
 
-DTOs
-Objetos utilizados para transferir datos entre el cliente y la API.
+Configure the connection string in appsettings.json
+Apply migrations
 
-Entities
-Modelos que representan las tablas de la base de datos.
+bash dotnet ef database update
 
-Data
-Contiene el DbContext que conecta la aplicación con la base de datos.
+Run the project
 
----
+bash dotnet run
 
-# Funcionalidades
+🔐 Authentication
 
-* Crear productos
-* Obtener todos los productos
-* Obtener un producto por ID
-* Actualizar productos
-* Eliminar productos
-* Documentación automática de la API con Swagger
+The API uses JWT to secure endpoints. To consume protected resources:
 
----
+Authorize at /api/auth/login
+Copy the received token
+Send it in the header: Authorization: Bearer {token}
 
- Endpoints de la API
+📌 Main Endpoints
 
- Obtener todos los productos
+Method Path Description POST /api/auth/login Login GET /api/products List products POST /api/products Create product PUT /api/products/{id} Update product DELETE /api/products/{id} Delete product
 
-GET
-/api/productos
+Adjust this table according to the actual endpoints of your project.
 
-Devuelve una lista con todos los productos registrados.
+📄 License
 
----
-
-## Obtener un producto por ID
-
-GET
-/api/productos/{id}
-
-Devuelve un producto específico según su identificador.
-
----
-
-## Crear un producto
-
-POST
-/api/productos
-
-Ejemplo de request:
-
-```json
-{
-  "nombre": "Laptop",
-  "precio": 1200,
-  "stock": 5
-}
-```
-
----
-
- Actualizar un producto
-
-PUT
-/api/productos/{id}
-
-Ejemplo:
-
-```json
-{
-  "nombre": "Laptop Gamer",
-  "precio": 1500,
-  "stock": 3
-}
-```
-
----
-
-## Eliminar un producto
-
-DELETE
-/api/productos/{id}
-
-Elimina un producto del sistema.
-
----
-
- Documentación de la API
-
-La documentación interactiva de la API está disponible mediante Swagger.
-
-Al ejecutar el proyecto se puede acceder desde:
-
-/swagger
-
-Desde ahí se pueden probar todos los endpoints directamente desde el navegador.
-
----
-
- Cómo ejecutar el proyecto
-
-1. Clonar el repositorio
-
-git clone <url-del-repositorio>
-
-2. Abrir el proyecto en Visual Studio
-
-3. Configurar la cadena de conexión en:
-
-appsettings.json
-
-4. Ejecutar las migraciones de Entity Framework
-
-Add-Migration InitialCreate
-Update-Database
-
-5. Ejecutar el proyecto
-
-Al iniciar la aplicación se abrirá automáticamente Swagger para probar los endpoints.
-
----
-
- Objetivo del proyecto
-
-Este proyecto fue desarrollado como práctica para aprender:
-
-* Desarrollo de APIs REST
-* Uso de Entity Framework Core
-* Arquitectura en capas
-* Uso de DTOs
-* Documentación con Swagger
-
+This project is free to use for learning purposes.
